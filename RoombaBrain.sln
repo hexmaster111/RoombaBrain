@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoombaBrain", "RoombaBrain\RoombaBrain.csproj", "{695E35A1-D2F7-461C-A5B6-200BB68A39A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{49CEEE2C-1008-4548-80D1-63566BF7F862}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{695E35A1-D2F7-461C-A5B6-200BB68A39A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{695E35A1-D2F7-461C-A5B6-200BB68A39A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{695E35A1-D2F7-461C-A5B6-200BB68A39A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
