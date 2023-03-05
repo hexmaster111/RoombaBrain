@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using roombaBrain.NeuralNetwork;
 
 namespace Tests;
@@ -86,7 +88,7 @@ public class Tests
 
     private void TestNetwork(int inputCount, int outputCount, int maxHiddenLayerCount)
     {
-        RandomNetworkFactory.CreateRandomNetwork(
+        NetworkFactory.BuildRandom(
             inputCount,
             outputCount,
             maxHiddenLayerCount,

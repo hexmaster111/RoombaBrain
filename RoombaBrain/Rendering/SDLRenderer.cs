@@ -20,7 +20,6 @@ public class SDLRenderer
     private Action<RenderArgs> _renderHandler;
 
 
-
     public SDLRenderer
     (
         Action<SDL_Event> eventHandler,
@@ -34,7 +33,8 @@ public class SDLRenderer
         _renderHandler = renderHandler;
         if (!SetupSdl())
         {
-            throw new Exception("Failed to setup SDL");
+            var err = SDL_GetError();
+            throw new Exception($"Failed to setup SDL: {err}");
         }
     }
 
@@ -42,18 +42,15 @@ public class SDLRenderer
     {
         long lastTime = SDL_GetTicks();
         long currentTime = SDL_GetTicks();
-        long deltaTime;
 
         while (Running)
         {
             currentTime = SDL_GetTicks();
-            deltaTime = currentTime - lastTime;
+            var deltaTime = currentTime - lastTime;
             if (targetFps > 0)
             {
-
                 if (deltaTime < 1000 / targetFps)
                 {
-
                     var timeToSleep = (1000 / targetFps) - deltaTime;
                     Thread.Sleep((int)timeToSleep);
                     continue;
@@ -105,13 +102,14 @@ public class SDLRenderer
         SDL_SetRenderDrawColor(Renderer, 0x00, 0x00, 0x00, 0xFF);
         SDL_RenderClear(Renderer);
         _renderHandler?.Invoke(new RenderArgs(Window,
-         Renderer, Font, Fps, deltaTime, ScreenWidth, ScreenHeight));
+            Renderer, Font, Fps, deltaTime, ScreenWidth, ScreenHeight));
         RenderFps();
         SDL_RenderPresent(Renderer);
     }
 
     private int[] _fpsHistory = new int[60];
     private int _fpsHistoryIndex = 0;
+
     private void RenderFps()
     {
         _fpsHistory[_fpsHistoryIndex] = Fps;
@@ -125,7 +123,7 @@ public class SDLRenderer
 
         var fpsText = $"FPS: {avgFps:00}";
         var FPSSurface = SDL2.SDL_ttf.TTF_RenderText_Solid(Font, fpsText,
-        new SDL_Color() { r = 0xFF, g = 0xFF, b = 0xFF, a = 0xFF });
+            new SDL_Color() { r = 0xFF, g = 0xFF, b = 0xFF, a = 0xFF });
         var fpsTexture = SDL_CreateTextureFromSurface(Renderer, FPSSurface);
         SDL_Rect fpsRect = new SDL_Rect()
         {
@@ -164,7 +162,7 @@ public class SDLRenderer
         if (SDL2.SDL_ttf.TTF_Init() < 0)
         {
             Console.WriteLine($"SDL_ttf could not initialize! SDL_ttf Error:" +
-            $"{SDL2.SDL_ttf.TTF_GetError()}");
+                              $"{SDL2.SDL_ttf.TTF_GetError()}");
             return false;
         }
 
@@ -180,7 +178,6 @@ public class SDLRenderer
     }
 }
 
-
 public struct RenderArgs
 {
     public IntPtr Window;
@@ -190,6 +187,7 @@ public struct RenderArgs
     public double DeltaTime;
     public int ScreenWidth_Px;
     public int ScreenHeight_px;
+
     public RenderArgs(IntPtr window, nint renderer, nint font, int fps, double deltaTime, int width_px, int height_px)
     {
         Renderer = renderer;
@@ -200,5 +198,4 @@ public struct RenderArgs
         ScreenWidth_Px = width_px;
         ScreenHeight_px = height_px;
     }
-
 }

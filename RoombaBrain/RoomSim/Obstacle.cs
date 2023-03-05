@@ -11,7 +11,6 @@ public struct Obstacle
     public double Height_ft;
 
 
-
     private static readonly SDL.SDL_Color obstacleColor = new SDL.SDL_Color()
     {
         r = 0x00,
@@ -51,19 +50,5 @@ public struct Obstacle
 
         SDL.SDL_RenderFillRect(args.Renderer, ref wallRect);
     }
-
-    internal bool Intersects(Circle agentCircle)
-    {
-        float left = Position.X;
-        float right = Position.X + (float)Width_ft;
-        float top = Position.Y;
-        float bottom = Position.Y + (float)Height_ft;
-
-        float agentLeft = agentCircle.Center.X - agentCircle.Raidus_ft;
-        float agentRight = agentCircle.Center.X + agentCircle.Raidus_ft;
-        float agentTop = agentCircle.Center.Y - agentCircle.Raidus_ft;
-        float agentBottom = agentCircle.Center.Y + agentCircle.Raidus_ft;
-
-        return agentLeft < right && agentRight > left && agentTop < bottom && agentBottom > top;
-    }
+    
 }

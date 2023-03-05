@@ -12,7 +12,7 @@ public class Agent
 
     private Circle agentCircle;
     private int Score = 0;
-    private Network _network;
+    AgentNetworkWrapper _networkWrapper;
 
     private static readonly SDL_Color color = new SDL_Color()
     {
@@ -24,22 +24,18 @@ public class Agent
 
     public Agent(Vector2 centerPoint, NetworkDto network)
     {
-        _network = Network.New(network);
+        _networkWrapper = new AgentNetworkWrapper(network);
         agentCircle = new Circle(centerPoint, Raidus_ft);
     }
 
     const float speedInFtPerSec = 0.918635f;
     const float speedInFtPerMs = speedInFtPerSec / 1000.00f;
+    private Room? lastState;
 
     public void Update(double deltaTime, Room state)
     {
-        var input = GetNetworkInput(state);
-
-
-        //This command is raw output from the neural network, and is not normalized
-        var command = new NetworkOutputCommand(0, 0, 0, 0);
-
-        command = new NetworkOutputCommand(999, 1000, 19, 20);
+        var input = GetNetworkInput(state, lastState);
+        var command = _networkWrapper.Run(input);
 
         float total = command.up + command.down + command.left + command.right;
         float up = command.up / total;
@@ -79,17 +75,15 @@ public class Agent
             }
         }
 
-        List<Dirt> dirtToRemove = new List<Dirt>();
-        foreach (var dirt in state.Dirts)
+        var dirtToRemove = new List<Dirt>();
+        foreach (var dirt in state.Dirts.Where(dirt => agentCircle.Contains(dirt.Position)))
         {
-            if (agentCircle.Contains(dirt.Position))
-            {
-                Score++;
-                dirtToRemove.Add(dirt);
-            }
+            Score++;
+            dirtToRemove.Add(dirt);
         }
 
         dirtToRemove.ForEach(dirt => state.Dirts.Remove(dirt));
+        lastState = state;
     }
 
 
@@ -98,33 +92,33 @@ public class Agent
         agentCircle.Render(args, pixelsPerFt, color);
     }
 
+    public const int NumInputs = 5;
+    public const int NumOutputs = 4;
+
     public record NetworkInput(
-        float leftBumper,
-        float rightBumper,
-        float leftWallDistanceSensor,
-        float centerWallDistanceSensor,
-        float rightWallDistanceSensor,
+        float distanceToLeftObstetricalOrWall,
+        float distanceToRightObstetricalOrWall,
+        float distanceToTopObstetricalOrWall,
+        float distanceToBottemObstetricalOrWall,
         float dirtDetector
     );
 
-
     public record NetworkOutputCommand(float up, float down, float left, float right);
 
-    private NetworkInput GetNetworkInput(Room state)
+
+    private NetworkInput GetNetworkInput(Room state, Room? previousState)
     {
-        float leftBumper = 0;
-        float rightBumper = 0;
-        float leftWallDistanceSensor = 0;
-        float centerWallDistanceSensor = 0;
-        float rightWallDistanceSensor = 0;
+        float distanceToLeftObstetricalOrWall = 0;
+        float distanceToRightObstetricalOrWall = 0;
+        float distanceToTopObstetricalOrWall = 0;
+        float distanceToBottemObstetricalOrWall = 0;
         float dirtDetector = 0;
 
         return new NetworkInput(
-            leftBumper,
-            rightBumper,
-            leftWallDistanceSensor,
-            centerWallDistanceSensor,
-            rightWallDistanceSensor,
+            distanceToLeftObstetricalOrWall,
+            distanceToRightObstetricalOrWall,
+            distanceToTopObstetricalOrWall,
+            distanceToBottemObstetricalOrWall,
             dirtDetector
         );
     }

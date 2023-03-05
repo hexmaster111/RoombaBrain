@@ -2,9 +2,39 @@
 
 namespace roombaBrain.NeuralNetwork;
 
-public static class RandomNetworkFactory
+public static class NetworkFactory
 {
-    public static void CreateRandomNetwork
+    public static void BuildRandom
+    (
+        int inputCount,
+        int outputCount,
+        int maxHiddenLayerCount,
+        out NetworkDto generatedNetwork)
+    {
+        if (maxHiddenLayerCount < 4)
+            throw new ArgumentException("maxHiddenLayerCount must be at least 4");
+
+        if (inputCount < 1)
+            throw new ArgumentException("inputCount must be at least 1");
+
+        if (outputCount < 1)
+            throw new ArgumentException("outputCount must be at least 1");
+
+
+        NetworkFactory.BuildRandom(
+            inputCount,
+            outputCount,
+            maxHiddenLayerCount,
+            4,
+            10,
+            5,
+            true,
+            null,
+            out generatedNetwork
+        );
+    }
+
+    public static void BuildRandom
     (
         int inputCount,
         int outputCount,

@@ -9,4 +9,9 @@
     <ItemGroup>
         <PackageReference Include="Sayers.SDL2.Core" Version="1.0.11" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="AgentNetworkWrapper.cs">
+        <DependentUpon>Agent.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
 </Project>
