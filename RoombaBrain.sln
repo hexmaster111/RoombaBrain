@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoombaBrain", "RoombaBrain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{49CEEE2C-1008-4548-80D1-63566BF7F862}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBrain", "TheBrain\TheBrain.csproj", "{353441FF-AA75-46DC-A242-60B0C4D1C391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrongCalcualtor", "WrongCalcualtor\WrongCalcualtor.csproj", "{AF106C3B-207C-447F-BD40-27FA3169E43B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49CEEE2C-1008-4548-80D1-63566BF7F862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{353441FF-AA75-46DC-A242-60B0C4D1C391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353441FF-AA75-46DC-A242-60B0C4D1C391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353441FF-AA75-46DC-A242-60B0C4D1C391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353441FF-AA75-46DC-A242-60B0C4D1C391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF106C3B-207C-447F-BD40-27FA3169E43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF106C3B-207C-447F-BD40-27FA3169E43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF106C3B-207C-447F-BD40-27FA3169E43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF106C3B-207C-447F-BD40-27FA3169E43B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

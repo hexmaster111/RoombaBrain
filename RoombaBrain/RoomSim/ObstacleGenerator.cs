@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace roombaBrain.RoomSim;
+namespace RoombaBrain.RoomSim;
 
 public static class ObstacleGenerator
 {

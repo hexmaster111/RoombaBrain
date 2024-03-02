@@ -1,7 +1,7 @@
-﻿using roombaBrain.Rendering;
+﻿using RoombaBrain.Rendering;
 using SDL2;
 
-namespace roombaBrain.RoomSim;
+namespace RoombaBrain.RoomSim;
 
 public struct Room
 {

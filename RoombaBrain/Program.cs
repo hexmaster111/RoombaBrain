@@ -1,10 +1,10 @@
 ﻿using System.Numerics;
-using roombaBrain.NeuralNetwork;
-using roombaBrain.Rendering;
-using roombaBrain.RoomSim;
+using RoombaBrain.Rendering;
+using RoombaBrain.RoomSim;
+using TheBrain;
 using static SDL2.SDL;
 
-namespace roombaBrain;
+namespace RoombaBrain;
 
 internal static class Program
 {

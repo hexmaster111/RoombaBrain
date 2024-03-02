@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
-using roombaBrain.NeuralNetwork.ActivationFunctions;
-using roombaBrain.NeuralNetwork.Neuron;
+using TheBrain.ActivationFunctions;
+using TheBrain.Neuron;
 
-namespace roombaBrain.NeuralNetwork;
+namespace TheBrain;
 
 public class Network
 {
@@ -97,7 +97,7 @@ public class Network
     }
 }
 
-public struct NeruonDto
+public class NeruonDto
 {
     public NeruonDto(double[] weights, double bias, ActivationFunctionType activationFunction)
     {
@@ -119,8 +119,8 @@ public struct LayerDto
         LayerType = layerType;
     }
 
-    public NeruonDto[] Neurons { get; set; }
-    public LayerType LayerType { get; set; }
+    public NeruonDto[] Neurons;
+    public LayerType LayerType;
 }
 
 public class NetworkDto
@@ -130,5 +130,5 @@ public class NetworkDto
         Layers = layers;
     }
 
-    public LayerDto[] Layers { get; set; }
+    public LayerDto[] Layers;
 }

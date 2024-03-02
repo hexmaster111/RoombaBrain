@@ -1,9 +1,19 @@
-﻿using roombaBrain.NeuralNetwork.ActivationFunctions;
+﻿using TheBrain.ActivationFunctions;
 
-namespace roombaBrain.NeuralNetwork;
+namespace TheBrain;
 
 public static class NetworkFactory
 {
+
+    public static NetworkDto BuildRandom(
+        int inputCount,
+        int outputCount,
+        int maxHiddenLayerCount)
+    {
+        BuildRandom(inputCount, outputCount, maxHiddenLayerCount, out var v);
+        return v;
+    }
+    
     public static void BuildRandom
     (
         int inputCount,
@@ -71,7 +81,7 @@ public static class NetworkFactory
         var inputNeurons = new NeruonDto[inputCount];
         for (var i = 0; i < inputCount; i++)
         {
-            inputNeurons[i] = new NeruonDto()
+            inputNeurons[i] = new NeruonDto(Array.Empty<double>(), 0,default)
             {
                 Bias = Random.Shared.NextDouble(inputNeuronsBiasMin, inputNeuronsBiasMax),
                 Weights = new[] { Random.Shared.NextDouble(inputNeuronsWeightMin, inputNeuronsWeightMax) },
@@ -106,7 +116,7 @@ public static class NetworkFactory
                     weights[k] = Random.Shared.NextDouble(hiddenNeuronsWeightMin, hiddenNeuronsWeightMax);
                 }
 
-                hiddenLayer[j] = new NeruonDto()
+                hiddenLayer[j] = new NeruonDto(Array.Empty<double>(), 0,default)
                 {
                     Bias = Random.Shared.NextDouble(hiddenNeuronsBiasMin, hiddenNeuronsBiasMax),
                     Weights = weights,
@@ -132,7 +142,7 @@ public static class NetworkFactory
                 outputWeights[j] = Random.Shared.NextDouble(outputNeuronsWeightMin, outputNeuronsWeightMax);
             }
 
-            outputNeurons[i] = new NeruonDto()
+            outputNeurons[i] = new NeruonDto(Array.Empty<double>(), 0,default)
             {
                 Bias = Random.Shared.NextDouble(outputNeuronsBiasMin, outputNeuronsBiasMax),
                 Weights = outputWeights,

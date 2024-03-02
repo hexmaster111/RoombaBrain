@@ -1,9 +1,8 @@
-using System.Diagnostics;
 using System.Numerics;
-using roombaBrain.Rendering;
+using RoombaBrain.Rendering;
 using static SDL2.SDL;
 
-namespace roombaBrain;
+namespace RoombaBrain;
 
 public class Circle
 {

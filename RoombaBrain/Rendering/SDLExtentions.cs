@@ -1,6 +1,6 @@
 using static SDL2.SDL;
 
-namespace roombaBrain.Rendering;
+namespace RoombaBrain.Rendering;
 
 public static class SDLExtentions
 {

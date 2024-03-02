@@ -1,30 +1,15 @@
 ﻿using System.Diagnostics;
-using roombaBrain.NeuralNetwork.ActivationFunctions;
+using TheBrain.ActivationFunctions;
 
-namespace roombaBrain.NeuralNetwork.Neuron;
+namespace TheBrain.Neuron;
 
-public class HiddenNeuron : INeuron
+public class OutputNeuron : INeuron
 {
     public IActivationFunction ActivationFunction { get; set; }
 
-    public HiddenNeuron(
-        IActivationFunction activationFunction,
-        double[] weights,
-        double bias
-    )
+    public OutputNeuron(IActivationFunction activationFunction, double[] weights, double bias)
     {
         ActivationFunction = activationFunction;
-        Weights = weights;
-        Bias = bias;
-    }
-    public HiddenNeuron(
-        double[] weights,
-        double bias,
-        ActivationFunctionType activationFunctionType
-    )
-    {
-        ActivationFunctionFactory aff = new();
-        ActivationFunction = aff.GetActivationFunction(activationFunctionType);
         Weights = weights;
         Bias = bias;
     }

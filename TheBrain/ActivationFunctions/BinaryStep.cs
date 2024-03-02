@@ -1,6 +1,6 @@
 
 
-namespace roombaBrain.NeuralNetwork.ActivationFunctions;
+namespace TheBrain.ActivationFunctions;
 
 public class BinaryStep : IActivationFunction
 {

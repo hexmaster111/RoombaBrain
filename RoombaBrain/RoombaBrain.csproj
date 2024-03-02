@@ -14,4 +14,7 @@
         <DependentUpon>Agent.cs</DependentUpon>
       </Compile>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\TheBrain\TheBrain.csproj" />
+    </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
-﻿using roombaBrain.NeuralNetwork.Neuron;
+﻿using TheBrain.Neuron;
 
-namespace roombaBrain.NeuralNetwork;
+namespace TheBrain;
 
 public class Layer
 {

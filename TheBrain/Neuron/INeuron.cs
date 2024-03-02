@@ -1,6 +1,6 @@
-using roombaBrain.NeuralNetwork.ActivationFunctions;
+using TheBrain.ActivationFunctions;
 
-namespace roombaBrain.NeuralNetwork.Neuron;
+namespace TheBrain.Neuron;
 
 
 public interface INeuron

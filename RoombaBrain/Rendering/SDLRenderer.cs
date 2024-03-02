@@ -2,7 +2,7 @@ using System.Diagnostics;
 using static SDL2.SDL;
 using static SDL2.SDL_ttf;
 
-namespace roombaBrain.Rendering;
+namespace RoombaBrain.Rendering;
 
 public class SDLRenderer
 {

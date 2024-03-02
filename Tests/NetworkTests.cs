@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using roombaBrain.NeuralNetwork;
+using TheBrain;
 
 namespace Tests;
 

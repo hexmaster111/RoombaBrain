@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using roombaBrain.NeuralNetwork;
+﻿using TheBrain;
 
-namespace roombaBrain;
+namespace RoombaBrain;
 
 public readonly struct AgentNetworkWrapper
 {
