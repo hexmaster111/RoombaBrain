@@ -84,19 +84,28 @@ static class Program
 
     static void Main(string[] args)
     {
-        var bestScore = 0.0;
-        NetworkDto bestNetwork = NetworkFactory.BuildRandom(8, 5, 5);
-        List<SingleNetworkOutputStatistic> bestOuts = new();
-        const int agents = 16;
-        const int agentItterations = 100;
+        const int agents = 64;
+        const int agentItterations = 75;
         const int generations = 5;
+        const int hiddenLayers = 4;
+        var bestScore = 0.0;
+        NetworkDto bestNetwork = null!;
+        List<SingleNetworkOutputStatistic> bestOuts = new();
 
         for (int generation = 0; generation < generations; generation++)
         {
             Task<MiniNetworkStats>[] tasks = new Task<MiniNetworkStats>[agents];
             for (int i = 0; i < agents; i++)
             {
-                tasks[i] = RunIttersAsync(agentItterations, bestNetwork, bestScore);
+                if (bestNetwork == null)
+                {
+                    var me = NetworkFactory.BuildRandom(8, 5, hiddenLayers);
+                    tasks[i] = RunIttersAsync(agentItterations, me, bestScore);
+                }
+                else
+                {
+                    tasks[i] = RunIttersAsync(agentItterations, EvolveToNext(bestNetwork), bestScore);
+                }
             }
 
 
